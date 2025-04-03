@@ -4,10 +4,15 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # Permet de lancer manuellement depuis GitHub Actions
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-20.04
+
     steps:
-      - name: Say hello
+      - name: Checkout repository
+        uses: actions/checkout@v4 
+
+      - name: Say Hello
         run: echo "Hello World!"
