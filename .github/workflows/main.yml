@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # Permet de lancer manuellement depuis GitHub Actions
+  workflow_dispatch:  # Permet de déclencher le workflow manuellement
 
 jobs:
   hello_world_job:
@@ -12,7 +12,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v4  # Télécharge le code du repo
 
       - name: Say Hello
         run: echo "Hello World!"
+
+      - name: Afficher la date actuelle
+        run: date  # Affiche la date et l'heure actuelles
+
+      - name: Lister le contenu du répertoire
+        run: ls -lah  # Liste les fichiers avec leurs détails
