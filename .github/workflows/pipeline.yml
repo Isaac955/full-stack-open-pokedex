@@ -7,18 +7,27 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:  # Permet de lancer manuellement
+  workflow_dispatch:  # Permet de lancer manuellement le workflow
 
 jobs:
   lint:
     runs-on: ubuntu-latest
 
     steps:
+      # Étape 1: Checkout du code source
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Installer yamllint
-        run: sudo apt-get install -y yamllint
+      # Étape 2: Installer Node.js (si ce n'est pas déjà installé)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Ajuste selon la version que tu utilises
 
-      - name: Linter les fichiers YAML
-        run: yamllint .
+      # Étape 3: Installer les dépendances de npm
+      - name: Install dependencies
+        run: npm install
+
+      # Étape 4: Exécuter ESLint
+      - name: Run ESLint
+        run: npm run eslint  # Assure-toi que tu as ce script dans ton package.json
