@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Ajuste selon la version que tu utilises
+          node-version: '22.11.0' 
 
       # Étape 3: Installer les dépendances de npm
       - name: Install dependencies
